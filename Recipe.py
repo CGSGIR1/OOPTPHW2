@@ -1,7 +1,7 @@
 from Ingredient import Ingredient
 
 class Recipe:
-    def __init__(self, title: str, ingredients: list[Ingredient]):
+    def __init__(self, title: str, ingredients: list):
         self.title = title
         self.ingredients = []
         for ingredient in ingredients:
@@ -22,15 +22,12 @@ class Recipe:
             return False
 
     def scale(self, ratio: float):
-        if Recipe.is_valid_ratio(ratio):
-            res = Recipe(self.title, [])
-            for ingredient in self.ingredients:
-                res.add_ingredient(ingredient)
-            for i in range(len(res)):
-                res.ingredients[i].quantity *= ratio
-            return res
-        else:
+        if not Recipe.is_valid_ratio(ratio):
             return None
+        res = Recipe(self.title, [])
+        for ingredient in self.ingredients:
+            res.add_ingredient(Ingredient(ingredient.name, ingredient.quantity * ratio, ingredient.unit))
+        return res
 
 
     def __len__(self):
