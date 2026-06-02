@@ -23,7 +23,7 @@ class Recipe:
 
     def scale(self, ratio: float):
         if not Recipe.is_valid_ratio(ratio):
-            return None
+            raise ValueError("Коэффициент должен быть положительным")
         res = Recipe(self.title, [])
         for ingredient in self.ingredients:
             res.add_ingredient(Ingredient(ingredient.name, ingredient.quantity * ratio, ingredient.unit))
@@ -38,10 +38,3 @@ class Recipe:
         for ingredient in self.ingredients:
             res += "- " + str(ingredient) + "\n"
         return res
-
-pizza = Recipe("Pizza",
-               [Ingredient("pour", 100.0, "g"),
-                Ingredient("pour", 200.0, "g"),
-                Ingredient("pour", 300.0, "kg"),
-                Ingredient("milk", 400.0, "ml"),
-                Ingredient("cheese", 5.0, "kg"),])
