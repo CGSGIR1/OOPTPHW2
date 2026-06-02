@@ -1,15 +1,15 @@
 class Ingredient:
-    def __init__(self, name, quantity, unit):
+    def __init__(self, name: str, quantity: float, unit: str):
         self.name = name
         self._quantity = quantity
         self.unit = unit
 
     @property
-    def quantity(self):
+    def quantity(self) -> float:
         return self._quantity
 
     @quantity.setter
-    def quantity(self, quantity):
+    def quantity(self, quantity: float):
         if quantity <= 0:
             raise ValueError("Количество должно быть положительным")
         self._quantity = quantity
