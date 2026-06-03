@@ -4,9 +4,9 @@
  
 ## Установка
  
-git clone <ссылка-на-репозиторий>
-cd <папка>
-pip install -r requirements.txt
+git clone <ссылка-на-репозиторий>\
+cd <папка>\
+pip install -r requirements.txt\
  
 ## Использование
  
